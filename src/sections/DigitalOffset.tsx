@@ -34,7 +34,7 @@ function OffsetAnimation() {
         </motion.div>
       ))}
       <motion.div
-        className="absolute -bottom-2 h-1 w-32 rounded-full bg-ivory-deep"
+        className="absolute -bottom-2 h-1 w-32 rounded-full bg-ivory/50"
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 1.4, repeat: Infinity }}
       />
@@ -55,20 +55,20 @@ export function DigitalOffset() {
         <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
           {printingMethods.map((method, i) => (
             <Reveal key={method.id} delay={i * 0.1}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-charcoal/8 bg-white/70 p-8 shadow-premium">
+              <div className="group relative h-full overflow-hidden rounded-3xl border border-ivory/10 bg-charcoal-soft/50 p-8 shadow-premium">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-royal to-electric text-ivory">
                   <Icon name={method.icon} className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-medium text-charcoal">{method.title}</h3>
-                <p className="mt-2 text-sm text-charcoal/60">{method.description}</p>
+                <h3 className="mt-5 font-display text-2xl font-medium text-ivory">{method.title}</h3>
+                <p className="mt-2 text-sm text-ivory/60">{method.description}</p>
 
-                <div className="my-6 flex h-16 items-center justify-center rounded-xl bg-charcoal/[0.03]">
+                <div className="my-6 flex h-16 items-center justify-center rounded-xl bg-ivory/[0.04]">
                   {method.id === 'digital' ? <DigitalAnimation /> : <OffsetAnimation />}
                 </div>
 
                 <ul className="space-y-2">
                   {method.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-charcoal/65">
+                    <li key={point} className="flex items-start gap-2 text-sm text-ivory/65">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
                       {point}
                     </li>

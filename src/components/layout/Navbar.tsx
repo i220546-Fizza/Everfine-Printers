@@ -38,7 +38,7 @@ export function Navbar() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
-        scrolled ? 'glass-panel border-b border-charcoal/10 shadow-[0_10px_40px_-20px_rgba(10,9,13,0.35)]' : 'bg-transparent'
+        scrolled ? 'glass-panel border-b border-ivory/10 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.5)]' : 'bg-transparent'
       )}
     >
       <nav className="container-ep flex h-20 items-center justify-between" aria-label="Primary">
@@ -47,7 +47,11 @@ export function Navbar() {
           className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric"
           aria-label="EverfinePrinters — go to home"
         >
-          <img src="/assets/brand/logo.png" alt="EverfinePrinters" className="h-9 w-auto sm:h-10" />
+          <img
+            src="/assets/brand/logo.png"
+            alt="EverfinePrinters"
+            className="h-9 w-auto drop-shadow-[0_2px_14px_rgba(255,255,255,0.18)] sm:h-10"
+          />
         </button>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -57,7 +61,7 @@ export function Navbar() {
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
                   'relative rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300',
-                  activeId === link.href ? 'text-royal' : 'text-charcoal/70 hover:text-charcoal'
+                  activeId === link.href ? 'text-royal-light' : 'text-ivory/70 hover:text-ivory'
                 )}
               >
                 {link.label}
@@ -80,7 +84,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-full text-charcoal lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-ivory lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -96,7 +100,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel overflow-hidden border-t border-charcoal/10 lg:hidden"
+            className="glass-panel overflow-hidden border-t border-ivory/10 lg:hidden"
           >
             <ul className="container-ep flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
@@ -105,7 +109,7 @@ export function Navbar() {
                     onClick={() => handleNavClick(link.href)}
                     className={cn(
                       'block w-full rounded-xl px-4 py-3 text-left text-base font-medium',
-                      activeId === link.href ? 'bg-royal/10 text-royal' : 'text-charcoal/80'
+                      activeId === link.href ? 'bg-royal/15 text-royal-light' : 'text-ivory/80'
                     )}
                   >
                     {link.label}
@@ -117,7 +121,7 @@ export function Navbar() {
                   Get a Quote
                 </Button>
               </li>
-              <li className="pt-1 text-center text-xs text-charcoal/40">{siteConfig.tagline}</li>
+              <li className="pt-1 text-center text-xs text-ivory/40">{siteConfig.tagline}</li>
             </ul>
           </motion.div>
         )}

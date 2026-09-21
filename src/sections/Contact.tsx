@@ -23,21 +23,21 @@ export function Contact() {
 
         <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <Reveal>
-            <div className="h-full rounded-3xl border border-charcoal/8 bg-white/70 p-8 shadow-premium sm:p-10">
+            <div className="h-full rounded-3xl border border-ivory/10 bg-charcoal-soft/50 p-8 shadow-premium sm:p-10">
               <ul className="space-y-5">
                 {rows.map((row) => (
                   <li key={row.label} className="flex items-start gap-4">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-royal/10 text-royal">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-royal/15 text-royal-light">
                       <row.icon size={17} strokeWidth={1.75} />
                     </span>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-charcoal/40">{row.label}</p>
+                      <p className="text-xs uppercase tracking-[0.2em] text-ivory/40">{row.label}</p>
                       {row.href ? (
-                        <a href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="mt-0.5 block text-sm font-medium text-charcoal hover:text-royal">
+                        <a href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="mt-0.5 block text-sm font-medium text-ivory hover:text-royal-light">
                           {row.value}
                         </a>
                       ) : (
-                        <p className="mt-0.5 text-sm font-medium text-charcoal">{row.value}</p>
+                        <p className="mt-0.5 text-sm font-medium text-ivory">{row.value}</p>
                       )}
                     </div>
                   </li>
@@ -59,13 +59,13 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="h-full min-h-[22rem] overflow-hidden rounded-3xl border border-charcoal/8 shadow-premium">
+            <div className="h-full min-h-[22rem] overflow-hidden rounded-3xl border border-ivory/10 shadow-premium">
               <iframe
                 title="EverfinePrinters location map"
                 src={siteConfig.contact.mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full min-h-[22rem] w-full grayscale-[20%]"
+                className="h-full min-h-[22rem] w-full opacity-90 invert-[0.92] grayscale-[30%]"
               />
             </div>
           </Reveal>

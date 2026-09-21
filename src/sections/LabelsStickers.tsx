@@ -10,7 +10,7 @@ export function LabelsStickers() {
   const items = labelsStickersServices.filter((s) => s.enabled)
 
   return (
-    <section id="labels-stickers" className="relative bg-ivory-soft py-24 sm:py-32">
+    <section id="labels-stickers" className="relative bg-charcoal py-24 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow="Labels & Stickers"
@@ -24,7 +24,7 @@ export function LabelsStickers() {
 
         <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.05}>
           {items.map((item) => (
-            <ServiceCard key={item.id} item={item} />
+            <ServiceCard key={item.id} item={item} dark />
           ))}
         </RevealGroup>
       </Container>

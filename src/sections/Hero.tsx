@@ -58,10 +58,10 @@ export function Hero() {
   return (
     <section id="home" className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
       {/* BACK LAYER — gradient wash */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ivory via-ivory to-ivory-soft" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-charcoal-deep via-charcoal to-charcoal-deep" />
 
       {/* MIDDLE-BACK LAYER — oversized editorial typography, slow independent parallax */}
-      <BigType text="PRINT" className="top-1/2 -translate-y-1/2 text-charcoal/[0.07]" parallax={-60} />
+      <BigType text="PRINT" className="top-1/2 -translate-y-1/2 text-ivory/[0.06]" parallax={-60} />
 
       {/* MIDDLE-BACK LAYER — blurred abstract light shapes, subtle mouse parallax */}
       <motion.div
@@ -98,7 +98,7 @@ export function Hero() {
             Premium Printing &amp; Branding
           </motion.p>
 
-          <h1 className="mt-6 text-4xl font-medium leading-[1.05] tracking-tight text-charcoal sm:text-6xl lg:text-6xl xl:text-7xl">
+          <h1 className="mt-6 text-4xl font-medium leading-[1.05] tracking-tight text-ivory sm:text-6xl lg:text-6xl xl:text-7xl">
             {lines.map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.08em]">
                 <motion.span
@@ -117,7 +117,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-charcoal/60 sm:text-lg lg:mx-0"
+            className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-ivory/60 sm:text-lg lg:mx-0"
           >
             Professional printing, packaging and promotional solutions crafted to bring your ideas to life.
           </motion.p>
@@ -140,7 +140,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-8 text-xs uppercase tracking-[0.3em] text-charcoal/35"
+            className="mt-8 text-xs uppercase tracking-[0.3em] text-ivory/35"
           >
             {siteConfig.taglineAlt}
           </motion.p>
@@ -169,7 +169,7 @@ export function Hero() {
       </Container>
 
       {/* Cinematic bridge into the next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ivory-soft" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-charcoal-deep" />
 
       <motion.button
         onClick={() => scrollToId('about')}
@@ -177,14 +177,14 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.8 }}
         aria-label="Scroll to explore"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-charcoal/40 sm:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/40 sm:flex"
       >
         <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <span className="h-9 w-5 rounded-full border border-charcoal/25 p-1">
+        <span className="h-9 w-5 rounded-full border border-ivory/25 p-1">
           <motion.span
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-            className="block h-1.5 w-1.5 rounded-full bg-charcoal/50"
+            className="block h-1.5 w-1.5 rounded-full bg-ivory/50"
           />
         </span>
       </motion.button>

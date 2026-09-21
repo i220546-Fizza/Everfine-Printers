@@ -19,7 +19,7 @@ export function SectionHeading({
   title,
   subtitle,
   align = 'center',
-  light = false,
+  light = true,
   className,
   as = 'h2',
 }: SectionHeadingProps) {

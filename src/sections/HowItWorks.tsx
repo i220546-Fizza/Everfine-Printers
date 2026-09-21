@@ -20,7 +20,7 @@ export function HowItWorks() {
         <SectionHeading eyebrow="Our Process" title="From idea to print" subtitle="From your first idea to a finished, delivered product." />
 
         <div ref={trackRef} className="relative mt-20">
-          <div className="absolute left-6 top-0 h-full w-px bg-charcoal/10 lg:left-0 lg:top-6 lg:h-px lg:w-full">
+          <div className="absolute left-6 top-0 h-full w-px bg-ivory/10 lg:left-0 lg:top-6 lg:h-px lg:w-full">
             <motion.div
               style={{ scaleY: lineScale }}
               className="h-full w-full origin-top bg-gradient-to-b from-royal to-electric lg:hidden"
@@ -41,12 +41,12 @@ export function HowItWorks() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-6 lg:gap-6">
             {processSteps.map((step, i) => (
               <Reveal key={step.step} delay={i * 0.06} className="relative pl-14 lg:pl-0 lg:pt-14 lg:text-center">
-                <div className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border-2 border-royal/30 bg-ivory text-royal lg:static lg:mx-auto lg:mb-4">
+                <div className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border-2 border-royal/40 bg-charcoal-soft text-royal-light lg:static lg:mx-auto lg:mb-4">
                   <Icon name={step.icon} className="h-[18px] w-[18px]" />
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-royal">{step.step}</p>
-                <h3 className="mt-1 font-display text-lg font-medium text-charcoal">{step.title}</h3>
-                <p className="mt-1 text-sm text-charcoal/55">{step.description}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-royal-light">{step.step}</p>
+                <h3 className="mt-1 font-display text-lg font-medium text-ivory">{step.title}</h3>
+                <p className="mt-1 text-sm text-ivory/55">{step.description}</p>
               </Reveal>
             ))}
           </div>

@@ -29,7 +29,7 @@ export function Packaging() {
 
           <RevealGroup className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4" stagger={0.05}>
             {items.map((item) => (
-              <ServiceCard key={item.id} item={item} />
+              <ServiceCard key={item.id} item={item} dark />
             ))}
           </RevealGroup>
         </div>

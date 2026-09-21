@@ -33,14 +33,14 @@ export function Services() {
           >
             <BusinessCardFlip />
           </CanvasStage>
-          <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-charcoal/35">Hover the card to flip it</p>
+          <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-ivory/35">Hover the card to flip it</p>
         </Reveal>
       </Container>
 
       <Container>
         <RevealGroup className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
           {items.map((item) => (
-            <ServiceCard key={item.id} item={item} />
+            <ServiceCard key={item.id} item={item} dark />
           ))}
         </RevealGroup>
       </Container>

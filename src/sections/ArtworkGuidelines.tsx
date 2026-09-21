@@ -15,12 +15,12 @@ export function ArtworkGuidelines() {
         <RevealGroup className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
           {artworkGuidelines.map((g) => (
             <RevealItem key={g.id}>
-              <div className="h-full rounded-2xl border border-charcoal/8 bg-white/70 p-6 shadow-[0_20px_50px_-30px_rgba(10,9,13,0.25)]">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-royal/10 text-royal">
+              <div className="h-full rounded-2xl border border-ivory/10 bg-charcoal-soft/50 p-6 shadow-[0_20px_50px_-30px_rgba(10,9,13,0.25)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-royal/15 text-royal-light">
                   <Icon name={g.icon} className="h-[18px] w-[18px]" />
                 </div>
-                <h3 className="mt-4 font-display text-base font-medium text-charcoal">{g.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">{g.description}</p>
+                <h3 className="mt-4 font-display text-base font-medium text-ivory">{g.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ivory/55">{g.description}</p>
               </div>
             </RevealItem>
           ))}

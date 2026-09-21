@@ -44,7 +44,7 @@ export function LargeFormat() {
 
           <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2" stagger={0.06}>
             {items.map((item) => (
-              <ServiceCard key={item.id} item={item} />
+              <ServiceCard key={item.id} item={item} dark />
             ))}
           </RevealGroup>
         </div>

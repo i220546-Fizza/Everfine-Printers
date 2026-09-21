@@ -22,13 +22,13 @@ export function WhyChooseUs() {
                 whileHover={{ rotateX: -4, rotateY: 4, y: -4 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 style={{ transformPerspective: 800 }}
-                className="group h-full rounded-2xl border border-charcoal/8 bg-gradient-to-br from-white to-ivory-soft p-8 shadow-[0_20px_50px_-30px_rgba(10,9,13,0.25)]"
+                className="group h-full rounded-2xl border border-ivory/10 bg-gradient-to-br from-charcoal-soft to-charcoal-deep p-8 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.5)]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-royal/10 to-electric/10 text-royal transition-colors duration-300 group-hover:from-royal group-hover:to-electric group-hover:text-ivory">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-royal/15 to-electric/15 text-royal-light transition-colors duration-300 group-hover:from-royal group-hover:to-electric group-hover:text-ivory">
                   <Icon name={item.icon} className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-medium text-charcoal">{item.title}</h3>
-                <p className="mt-2 text-sm text-charcoal/55">{item.description}</p>
+                <h3 className="mt-5 font-display text-lg font-medium text-ivory">{item.title}</h3>
+                <p className="mt-2 text-sm text-ivory/55">{item.description}</p>
               </motion.div>
             </RevealItem>
           ))}

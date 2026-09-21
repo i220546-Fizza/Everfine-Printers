@@ -66,7 +66,7 @@ export function Portfolio() {
 
   return (
     <section id="portfolio" className="relative overflow-hidden py-24 sm:py-32">
-      <BigType text="WORK" className="top-10 text-charcoal/[0.06]" />
+      <BigType text="WORK" className="top-10 text-ivory/[0.06]" />
 
       <Container className="relative">
         <SectionHeading eyebrow="Showcase" title="Our Work" subtitle="A selection of projects across print, packaging and branding." />
@@ -80,7 +80,7 @@ export function Portfolio() {
                 'rounded-full border px-4 py-2 text-xs font-medium tracking-wide transition-colors duration-300',
                 filter === cat
                   ? 'border-transparent bg-gradient-to-r from-royal to-electric text-ivory'
-                  : 'border-charcoal/15 text-charcoal/60 hover:border-royal/40 hover:text-royal'
+                  : 'border-ivory/15 text-ivory/60 hover:border-royal/40 hover:text-royal-light'
               )}
             >
               {cat}

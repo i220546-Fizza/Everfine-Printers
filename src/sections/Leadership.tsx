@@ -8,8 +8,8 @@ import { leadershipTeam } from '@/data/leadership'
 
 export function Leadership() {
   return (
-    <section id="leadership" className="relative overflow-hidden bg-ivory-soft py-24 sm:py-32">
-      <BigType text="TEAM" className="bottom-0 text-charcoal/[0.06]" parallax={40} />
+    <section id="leadership" className="relative overflow-hidden bg-charcoal py-24 sm:py-32">
+      <BigType text="TEAM" className="bottom-0 text-ivory/[0.06]" parallax={40} />
       <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-royal/10 blur-[130px]" />
 
       <Container className="relative">
@@ -21,16 +21,16 @@ export function Leadership() {
               <div className="group">
                 <LeadershipPhoto src={member.photoSrc} name={member.name} />
                 <div className="mt-6 text-center">
-                  <h3 className="font-display text-2xl font-medium text-charcoal">{member.name}</h3>
-                  <p className="mt-1 text-sm font-medium uppercase tracking-[0.2em] text-royal">{member.role}</p>
-                  <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-charcoal/55">{member.bio}</p>
+                  <h3 className="font-display text-2xl font-medium text-ivory">{member.name}</h3>
+                  <p className="mt-1 text-sm font-medium uppercase tracking-[0.2em] text-royal-light">{member.role}</p>
+                  <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-ivory/55">{member.bio}</p>
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`${member.name} on LinkedIn`}
-                      className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-charcoal/15 text-charcoal/50 transition-colors hover:border-royal hover:text-royal"
+                      className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/15 text-ivory/50 transition-colors hover:border-royal-light hover:text-royal-light"
                     >
                       <LinkedinIcon className="h-[15px] w-[15px]" />
                     </a>

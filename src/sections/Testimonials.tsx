@@ -36,7 +36,7 @@ export function Testimonials() {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0 text-center"
               >
-                <p className="font-display text-xl font-medium leading-relaxed text-charcoal sm:text-2xl">
+                <p className="font-display text-xl font-medium leading-relaxed text-ivory sm:text-2xl">
                   &ldquo;{active.review}&rdquo;
                 </p>
                 <div className="mt-5 flex items-center justify-center gap-1">
@@ -44,12 +44,12 @@ export function Testimonials() {
                     <Star
                       key={i}
                       size={15}
-                      className={i < active.rating ? 'fill-royal text-royal' : 'text-charcoal/20'}
+                      className={i < active.rating ? 'fill-royal-light text-royal-light' : 'text-ivory/20'}
                     />
                   ))}
                 </div>
-                <p className="mt-4 text-sm font-semibold text-charcoal">{active.name}</p>
-                <p className="text-xs uppercase tracking-[0.2em] text-charcoal/40">{active.company}</p>
+                <p className="mt-4 text-sm font-semibold text-ivory">{active.name}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-ivory/40">{active.company}</p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -58,7 +58,7 @@ export function Testimonials() {
             <button
               onClick={() => go(-1)}
               aria-label="Previous testimonial"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 text-charcoal/60 transition-colors hover:border-royal hover:text-royal"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 text-ivory/60 transition-colors hover:border-royal-light hover:text-royal-light"
             >
               <ChevronLeft size={17} />
             </button>
@@ -71,14 +71,14 @@ export function Testimonials() {
                     setIndex(i)
                   }}
                   aria-label={`Go to testimonial ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-6 bg-royal' : 'w-1.5 bg-charcoal/20'}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-6 bg-royal' : 'w-1.5 bg-ivory/20'}`}
                 />
               ))}
             </div>
             <button
               onClick={() => go(1)}
               aria-label="Next testimonial"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 text-charcoal/60 transition-colors hover:border-royal hover:text-royal"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 text-ivory/60 transition-colors hover:border-royal-light hover:text-royal-light"
             >
               <ChevronRight size={17} />
             </button>

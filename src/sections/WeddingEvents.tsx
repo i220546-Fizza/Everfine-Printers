@@ -15,7 +15,7 @@ export function WeddingEvents() {
   const { ref, inView } = useInViewOnce<HTMLDivElement>(0.35)
 
   return (
-    <section id="wedding" className="relative overflow-hidden bg-ivory-soft py-24 sm:py-32">
+    <section id="wedding" className="relative overflow-hidden bg-charcoal py-24 sm:py-32">
       <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-royal/10 blur-[110px]" />
 
       <Container className="grid items-center gap-14 lg:grid-cols-2">
@@ -42,7 +42,7 @@ export function WeddingEvents() {
 
           <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2" stagger={0.08}>
             {items.map((item) => (
-              <ServiceCard key={item.id} item={item} />
+              <ServiceCard key={item.id} item={item} dark />
             ))}
           </RevealGroup>
         </div>

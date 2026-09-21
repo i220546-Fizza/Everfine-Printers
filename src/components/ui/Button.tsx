@@ -12,8 +12,8 @@ const variants = {
   primary:
     'bg-gradient-to-r from-royal to-electric text-ivory shadow-[0_18px_40px_-14px_rgba(218,6,121,0.55)] hover:shadow-[0_22px_50px_-12px_rgba(10,75,150,0.6)]',
   secondary:
-    'border border-charcoal/20 bg-transparent text-charcoal hover:border-charcoal/40 hover:bg-charcoal/5',
-  ghost: 'text-charcoal hover:text-royal',
+    'border border-ivory/20 bg-transparent text-ivory hover:border-ivory/40 hover:bg-ivory/5',
+  ghost: 'text-ivory hover:text-royal-light',
   light: 'bg-ivory text-charcoal hover:bg-ivory-soft',
 }
 
