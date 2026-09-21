@@ -3,11 +3,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { LeadershipPhoto } from '@/components/ui/LeadershipPhoto'
 import { LinkedinIcon } from '@/components/ui/SocialIcons'
 import { Reveal } from '@/components/ui/Reveal'
+import { BigType } from '@/components/ui/BigType'
 import { leadershipTeam } from '@/data/leadership'
 
 export function Leadership() {
   return (
     <section id="leadership" className="relative overflow-hidden bg-ivory-soft py-24 sm:py-32">
+      <BigType text="TEAM" className="bottom-0 text-charcoal/[0.06]" parallax={40} />
       <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-royal/10 blur-[130px]" />
 
       <Container className="relative">

@@ -2,11 +2,15 @@ import { MotionConfig } from 'framer-motion'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
+import { LoadingScreen } from '@/components/ui/LoadingScreen'
+import { CustomCursor } from '@/components/ui/CustomCursor'
 import { Home } from '@/pages/Home'
 
 function App() {
   return (
     <MotionConfig reducedMotion="user">
+      <LoadingScreen />
+      <CustomCursor />
       <div className="min-h-screen bg-ivory">
         <a
           href="#home"

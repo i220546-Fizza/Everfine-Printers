@@ -29,6 +29,8 @@
   --animate-marquee: marquee 30s linear infinite;
   --animate-spin-slow: spin 14s linear infinite;
   --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-drift-slow: drift 22s ease-in-out infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -41,6 +43,13 @@
   @keyframes shimmer {
     from { background-position: -200% 0; }
     to { background-position: 200% 0; }
+  }
+  @keyframes drift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(14px, -18px); }
+    50% { transform: translate(-6px, -34px); }
+    75% { transform: translate(-18px, -10px); }
+    100% { transform: translate(0, 0); }
   }
 }
 
@@ -101,6 +110,17 @@
       scroll-behavior: auto !important;
     }
   }
+
+  html.custom-cursor-active,
+  html.custom-cursor-active a,
+  html.custom-cursor-active button {
+    cursor: none !important;
+  }
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea,
+  html.custom-cursor-active select {
+    cursor: text !important;
+  }
 }
 
 @layer components {
@@ -132,6 +152,20 @@
   .btn-shine {
     background-image: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
     background-size: 200% 100%;
+  }
+
+  .big-type {
+    @apply pointer-events-none select-none font-display leading-none tracking-tight;
+    font-size: clamp(6rem, 22vw, 22rem);
+    font-weight: 600;
+    -webkit-text-stroke: 1.5px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .big-type-fill {
+    @apply pointer-events-none select-none font-display leading-none tracking-tight;
+    font-size: clamp(6rem, 22vw, 22rem);
+    font-weight: 600;
   }
 }
 

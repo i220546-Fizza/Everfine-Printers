@@ -1,4 +1,5 @@
 import { Hero } from '@/sections/Hero'
+import { PrintJourney } from '@/sections/PrintJourney'
 import { About } from '@/sections/About'
 import { WhyChooseUs } from '@/sections/WhyChooseUs'
 import { Services } from '@/sections/Services'
@@ -21,6 +22,7 @@ export function Home() {
   return (
     <>
       <Hero />
+      <PrintJourney />
       <About />
       <WhyChooseUs />
       <Services />

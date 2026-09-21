@@ -43,25 +43,61 @@ src/
   components/
     layout/          Navbar, Footer, WhatsAppButton
     three/            All R3F scenes + CanvasStage (Suspense/ErrorBoundary/WebGL-fallback wrapper)
-    ui/               Reusable primitives: Button, Modal, SectionHeading, ServiceCard
-                      (with its "Explore Service" CTA), ProductArt (line-art placeholder
-                      illustrations), LeadershipPhoto, StickerSheet, FormField, Reveal, Icon,
-                      SocialIcons...
+    ui/               Reusable primitives: Button (magnetic hover), Modal, SectionHeading
+                      (auto word-mask heading reveal), RevealHeading, BigType (oversized
+                      parallax typography layer), Particles, CustomCursor, LoadingScreen,
+                      ServiceCard (3D tilt + "Explore Service" CTA), ProductArt (line-art
+                      placeholder illustrations), LeadershipPhoto, StickerSheet, FormField,
+                      Reveal, Icon, SocialIcons...
   data/               All editable content lives here (see below) — no content is hardcoded in JSX
-  hooks/              useTilt, useReducedMotion, useMediaQuery, useScrollSpy, useInViewOnce,
-                      useWebGLSupport
+  hooks/              useTilt, useMagnetic, useMousePosition, useReducedMotion, useMediaQuery,
+                      useScrollSpy, useInViewOnce, useWebGLSupport
   pages/
     Home.tsx          Assembles every section in page order (see below)
-  sections/            One component per homepage section (Hero, About, Services, Packaging, ...)
-  utils/               cn, scrollTo, whatsapp link builder, gsap setup, form validation
+  sections/            One component per homepage section (Hero, PrintJourney, About, Services, ...)
+  utils/               cn, scrollTo, whatsapp link builder, gsap setup, form validation, mergeRefs
 ```
 
 ### Page section order
 
-`Hero → About → Why EverfinePrinters → Services (Business Printing) → Wedding & Event →
-Packaging → Promotional → Labels & Stickers → Large Format → Digital/Offset → Our Work
-(Portfolio) → Leadership → Process (How It Works) → Testimonials → FAQ → Artwork Guidelines →
-Request a Quote → Contact`
+`Hero → The Print Journey (signature scroll story) → About → Why EverfinePrinters → Services
+(Business Printing) → Wedding & Event → Packaging → Promotional → Labels & Stickers → Large
+Format → Digital/Offset → Our Work (Portfolio) → Leadership → Process (How It Works) →
+Testimonials → FAQ → Artwork Guidelines → Request a Quote → Contact`
+
+## Motion & depth system
+
+The site is built as a layered, motion-driven experience rather than a series of flat sections:
+
+- **Loading screen** (`LoadingScreen`) — a ~1.6s cinematic intro (ink fills a paper sheet, the
+  wordmark assembles) shown once per page load; resolves instantly under reduced motion.
+- **Custom cursor** (`CustomCursor`, desktop/fine-pointer only) — a small dot + ring that expands
+  and labels itself (`VIEW`, `EXPLORE`, `QUOTE`) over portfolio items, service cards and CTAs.
+  Elements opt in via `data-cursor="view" | "explore" | "quote" | "cta"`.
+- **The Print Journey** (`sections/PrintJourney.tsx` + `components/three/PrintJourneyScene.tsx`)
+  — the site's signature scroll-pinned 3D sequence: a blank sheet passes through printing
+  rollers, then crossfades through a business card, wedding invitation, brochure, packaging box
+  and branded bag before resolving into the EverfinePrinters wordmark. Driven by a single GSAP
+  `ScrollTrigger` (pinned on tablet/desktop, a normal in-flow scrub on mobile); has a fully static
+  fallback under `prefers-reduced-motion`.
+- **Layered sections** — `BigType` renders oversized, low-opacity outlined typography (`PRINT`,
+  `ABOUT`, `TEAM`, `WORK`, `QUOTE`) behind Hero, About, Leadership, Portfolio and the Quote
+  section, drifting slowly on its own scroll-linked parallax independent of the foreground
+  content, plus `Particles` (drifting dots) and blurred gradient shapes in the Hero for extra
+  depth.
+- **Mouse parallax** — Hero's background blur shapes and particle layer shift subtly with cursor
+  position (`useMousePosition`); 3D scenes react to the cursor independently inside their own
+  canvases.
+- **Heading reveals** — `SectionHeading` automatically mask-reveals string titles word-by-word
+  (blur → sharp, rising out of an overflow-hidden mask) via `RevealHeading`; Hero's two-line H1
+  uses the same technique directly since it also carries a gradient span.
+- **3D card interactions** — `ServiceCard` and the Portfolio masonry cards tilt in 3D on hover
+  (`useTilt`), with an icon rotate/scale and a cursor-tracking glare overlay.
+- **Micro-motion** — primary buttons have a subtle magnetic pull toward the cursor
+  (`useMagnetic`), and section eyebrows draw in a small underline on reveal.
+
+All of the above is gated by `useReducedMotion`/`prefers-reduced-motion` and `useIsMobile` —
+see **Performance & responsiveness notes** below.
 
 ## Content you should edit
 
@@ -123,11 +159,17 @@ npm run preview   # preview the production build
   also catches WebGL context errors (`ErrorBoundary`) and falls back to a lightweight static
   illustration (`ProductArt`) when WebGL isn't available at all.
 - The hero scene reduces object count and disables shadows on mobile/tablet (`useIsMobile` /
-  `useIsTablet`) and caps device pixel ratio.
-- `prefers-reduced-motion` is respected globally: CSS animation/transition durations are
-  clamped via a media query in `index.css`, Framer Motion is wrapped in
-  `<MotionConfig reducedMotion="user">`, and every scroll-triggered 3D animation
-  (`useReducedMotion`) jumps straight to its resting state instead of animating.
+  `useIsTablet`) and caps device pixel ratio; The Print Journey's `ScrollTrigger` pin is disabled
+  below the `md` breakpoint so it plays as a normal (lighter) in-flow scroll instead of
+  scroll-jacking a small screen.
+- `prefers-reduced-motion` is respected globally and specifically: CSS animation/transition
+  durations are clamped via a media query in `index.css`, Framer Motion is wrapped in
+  `<MotionConfig reducedMotion="user">`, every scroll-triggered 3D animation (`useReducedMotion`)
+  jumps straight to its resting state, `BigType`'s parallax and `Particles` are disabled outright,
+  `CustomCursor` doesn't mount, and The Print Journey renders a short static summary instead of
+  pinning the viewport.
+- `Particles` halves its dot count on mobile (`useIsMobile`); all particle/parallax motion uses
+  GPU-friendly `transform`/`opacity` only.
 - No portfolio photography was available, so a consistent set of hand-drawn line-art
   "blueprint" illustrations (`ProductArt`) stands in for stock photography in a few places (e.g.
   3D-unavailable fallbacks) — swap these for real photography whenever it's available.

@@ -4,6 +4,7 @@ import { CheckCircle2, Send, UploadCloud, MessageCircle } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
+import { BigType } from '@/components/ui/BigType'
 import { TextField, SelectField, TextAreaField } from '@/components/ui/FormField'
 import { quoteServiceOptions, finishingOptions } from '@/data/quoteOptions'
 import { validateQuoteForm, type QuoteFormValues, type QuoteFormErrors } from '@/utils/validation'
@@ -45,6 +46,7 @@ export function QuoteForm() {
 
   return (
     <section id="quote" className="relative overflow-hidden bg-charcoal-deep py-24 text-ivory sm:py-32">
+      <BigType text="QUOTE" className="top-0 text-ivory/[0.035]" parallax={-45} />
       <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-royal/25 blur-[140px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-electric/20 blur-[140px]" />
 

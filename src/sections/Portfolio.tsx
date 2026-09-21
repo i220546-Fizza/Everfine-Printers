@@ -3,10 +3,56 @@ import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Modal } from '@/components/ui/Modal'
+import { BigType } from '@/components/ui/BigType'
+import { useTilt } from '@/hooks/useTilt'
 import { cn } from '@/utils/cn'
-import { portfolioItems, portfolioCategories, type PortfolioCategory } from '@/data/portfolio'
+import { portfolioItems, portfolioCategories, type PortfolioCategory, type PortfolioItem } from '@/data/portfolio'
 
 const patternHeights = ['h-64', 'h-80', 'h-72', 'h-96', 'h-64', 'h-80']
+
+function PortfolioCard({ item, index, onOpen }: { item: PortfolioItem; index: number; onOpen: () => void }) {
+  const tilt = useTilt<HTMLButtonElement>(5)
+
+  return (
+    <motion.button
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      layout
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.4, delay: (index % 6) * 0.03 }}
+      style={{
+        rotateX: tilt.style.rotateX,
+        rotateY: tilt.style.rotateY,
+        transformPerspective: tilt.style.transformPerspective,
+      }}
+      onClick={onOpen}
+      data-cursor="view"
+      className="group mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl text-left shadow-[0_20px_50px_-30px_rgba(10,9,13,0.35)]"
+    >
+      <div
+        className={cn(
+          'relative flex w-full items-center justify-center overflow-hidden',
+          patternHeights[index % patternHeights.length]
+        )}
+        style={{
+          background: `linear-gradient(135deg, ${item.accent}, color-mix(in srgb, ${item.accent} 40%, #1c1a22))`,
+        }}
+      >
+        <span className="font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105">
+          {item.title}
+        </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      </div>
+      <div className="bg-white px-5 py-4">
+        <p className="text-xs font-medium uppercase tracking-[0.15em] text-royal">{item.category}</p>
+        <p className="mt-1 font-display text-base font-medium text-charcoal">{item.title}</p>
+      </div>
+    </motion.button>
+  )
+}
 
 export function Portfolio() {
   const [filter, setFilter] = useState<PortfolioCategory | 'All'>('All')
@@ -19,8 +65,10 @@ export function Portfolio() {
   const active = portfolioItems.find((p) => p.id === activeId) ?? null
 
   return (
-    <section id="portfolio" className="relative py-24 sm:py-32">
-      <Container>
+    <section id="portfolio" className="relative overflow-hidden py-24 sm:py-32">
+      <BigType text="WORK" className="top-10 text-charcoal/[0.06]" />
+
+      <Container className="relative">
         <SectionHeading eyebrow="Showcase" title="Our Work" subtitle="A selection of projects across print, packaging and branding." />
 
         <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-2">
@@ -44,35 +92,7 @@ export function Portfolio() {
           <motion.div layout className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
             <AnimatePresence mode="popLayout">
               {items.map((item, i) => (
-                <motion.button
-                  layout
-                  key={item.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.4, delay: (i % 6) * 0.03 }}
-                  onClick={() => setActiveId(item.id)}
-                  className="group mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl text-left shadow-[0_20px_50px_-30px_rgba(10,9,13,0.35)]"
-                >
-                  <div
-                    className={cn(
-                      'relative flex w-full items-center justify-center overflow-hidden',
-                      patternHeights[i % patternHeights.length]
-                    )}
-                    style={{
-                      background: `linear-gradient(135deg, ${item.accent}, color-mix(in srgb, ${item.accent} 40%, #1c1a22))`,
-                    }}
-                  >
-                    <span className="font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105">
-                      {item.title}
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </div>
-                  <div className="bg-white px-5 py-4">
-                    <p className="text-xs font-medium uppercase tracking-[0.15em] text-royal">{item.category}</p>
-                    <p className="mt-1 font-display text-base font-medium text-charcoal">{item.title}</p>
-                  </div>
-                </motion.button>
+                <PortfolioCard key={item.id} item={item} index={i} onOpen={() => setActiveId(item.id)} />
               ))}
             </AnimatePresence>
           </motion.div>

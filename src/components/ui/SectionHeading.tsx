@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
+import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import { RevealHeading } from './RevealHeading'
 import { cn } from '@/utils/cn'
 
 interface SectionHeadingProps {
@@ -19,7 +21,7 @@ export function SectionHeading({
   align = 'center',
   light = false,
   className,
-  as: As = 'h2',
+  as = 'h2',
 }: SectionHeadingProps) {
   return (
     <Reveal
@@ -31,18 +33,41 @@ export function SectionHeading({
     >
       {eyebrow && (
         <p className={cn('eyebrow mb-4', light && 'text-electric-light')}>
-          <span className="h-px w-6 bg-current opacity-60" />
+          <motion.span
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="h-px w-6 origin-left bg-current opacity-60"
+          />
           {eyebrow}
         </p>
       )}
-      <As
-        className={cn(
-          'text-3xl font-medium leading-[1.1] sm:text-4xl lg:text-5xl',
-          light ? 'text-ivory' : 'text-charcoal'
-        )}
-      >
-        {title}
-      </As>
+      {typeof title === 'string' ? (
+        <RevealHeading
+          text={title}
+          as={as}
+          align={align}
+          className={cn(
+            'text-3xl font-medium leading-[1.1] sm:text-4xl lg:text-5xl',
+            light ? 'text-ivory' : 'text-charcoal'
+          )}
+        />
+      ) : (
+        (() => {
+          const As = as
+          return (
+            <As
+              className={cn(
+                'text-3xl font-medium leading-[1.1] sm:text-4xl lg:text-5xl',
+                light ? 'text-ivory' : 'text-charcoal'
+              )}
+            >
+              {title}
+            </As>
+          )
+        })()
+      )}
       {subtitle && (
         <p className={cn('mt-5 text-base leading-relaxed sm:text-lg', light ? 'text-ivory/70' : 'text-charcoal/60')}>
           {subtitle}
