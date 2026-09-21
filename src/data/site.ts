@@ -13,9 +13,13 @@ export const siteConfig = {
     role: 'Chief Executive Officer',
   },
   contact: {
-    // TODO: replace with your real WhatsApp number in international format (no + or spaces)
-    whatsappNumber: '923000000000',
-    phone: '+92 300 0000000',
+    // WhatsApp destination — international format, no + or spaces
+    whatsappNumber: '923005285548',
+    phone: '+92 300 5285548',
+    phoneNumbers: [
+      { display: '+92 300 5285548', href: 'tel:+923005285548' },
+      { display: '+92 301 5163456', href: 'tel:+923015163456' },
+    ],
     email: 'info@everfineprinters.com',
     address: 'Shop #00, Main Boulevard, Your City, Pakistan',
     openingHours: 'Mon – Sat: 10:00 AM – 8:00 PM',

@@ -89,9 +89,16 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-ivory/65">
               <li className="flex items-start gap-2">
                 <Phone size={15} className="mt-0.5 shrink-0 text-electric-light" strokeWidth={1.75} />
-                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-electric-light">
-                  {siteConfig.contact.phone}
-                </a>
+                <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                  {siteConfig.contact.phoneNumbers.map((number, i) => (
+                    <span key={number.href} className="inline-flex items-center gap-2">
+                      <a href={number.href} className="hover:text-electric-light">
+                        {number.display}
+                      </a>
+                      {i < siteConfig.contact.phoneNumbers.length - 1 && <span className="text-ivory/30">·</span>}
+                    </span>
+                  ))}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <MessageCircle size={15} className="mt-0.5 shrink-0 text-electric-light" strokeWidth={1.75} />

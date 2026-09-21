@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react'
 import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -7,8 +8,8 @@ import { siteConfig } from '@/data/site'
 import { buildWhatsAppLink } from '@/utils/whatsapp'
 import { scrollToId } from '@/utils/scrollTo'
 
-const rows = [
-  { icon: Phone, label: 'Phone', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone}` },
+const rows: { icon: LucideIcon; label: string; value?: string; href?: string; links?: { display: string; href: string }[] }[] = [
+  { icon: Phone, label: 'Phone', links: [...siteConfig.contact.phoneNumbers] },
   { icon: MessageCircle, label: 'WhatsApp', value: siteConfig.contact.phone, href: buildWhatsAppLink() },
   { icon: Mail, label: 'Email', value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
   { icon: MapPin, label: 'Address', value: siteConfig.contact.address },
@@ -32,7 +33,18 @@ export function Contact() {
                     </span>
                     <div>
                       <p className="text-xs uppercase tracking-[0.2em] text-ivory/40">{row.label}</p>
-                      {row.href ? (
+                      {row.links ? (
+                        <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm font-medium text-ivory">
+                          {row.links.map((link, i) => (
+                            <span key={link.href} className="inline-flex items-center gap-2">
+                              <a href={link.href} className="hover:text-royal-light">
+                                {link.display}
+                              </a>
+                              {i < row.links!.length - 1 && <span className="text-ivory/30">·</span>}
+                            </span>
+                          ))}
+                        </p>
+                      ) : row.href ? (
                         <a href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="mt-0.5 block text-sm font-medium text-ivory hover:text-royal-light">
                           {row.value}
                         </a>
