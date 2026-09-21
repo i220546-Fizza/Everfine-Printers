@@ -1,0 +1,166 @@
+import { useState, type FormEvent } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { CheckCircle2, Send, UploadCloud, MessageCircle } from 'lucide-react'
+import { Container } from '@/components/ui/Container'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { Button } from '@/components/ui/Button'
+import { TextField, SelectField, TextAreaField } from '@/components/ui/FormField'
+import { quoteProductOptions, printingTypeOptions, finishingOptions } from '@/data/quoteOptions'
+import { validateQuoteForm, type QuoteFormValues, type QuoteFormErrors } from '@/utils/validation'
+import { buildWhatsAppLink } from '@/utils/whatsapp'
+
+const initialValues: QuoteFormValues = {
+  fullName: '',
+  companyName: '',
+  phone: '',
+  whatsapp: '',
+  email: '',
+  product: '',
+  quantity: '',
+  size: '',
+  material: '',
+  printingType: '',
+  finishing: '',
+  deliveryDate: '',
+  requirements: '',
+}
+
+export function QuoteForm() {
+  const [values, setValues] = useState<QuoteFormValues>(initialValues)
+  const [errors, setErrors] = useState<QuoteFormErrors>({})
+  const [artworkName, setArtworkName] = useState<string | null>(null)
+  const [submitted, setSubmitted] = useState(false)
+
+  function update<K extends keyof QuoteFormValues>(key: K, value: QuoteFormValues[K]) {
+    setValues((v) => ({ ...v, [key]: value }))
+  }
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+    const validationErrors = validateQuoteForm(values)
+    setErrors(validationErrors)
+    if (Object.keys(validationErrors).length > 0) return
+
+    // NOTE: no backend is wired up yet. Once the MongoDB "Quote Requests" collection
+    // and API route exist, POST `values` (+ artwork file) there instead of this local state.
+    setSubmitted(true)
+  }
+
+  function whatsappMessage() {
+    const lines = [
+      'Hello EverfinePrinters, I would like to get a quotation for a printing project.',
+      values.product && `Product: ${values.product}`,
+      values.quantity && `Quantity: ${values.quantity}`,
+      values.fullName && `Name: ${values.fullName}`,
+    ].filter(Boolean)
+    return lines.join('\n')
+  }
+
+  return (
+    <section id="quote" className="relative overflow-hidden bg-charcoal-deep py-24 text-ivory sm:py-32">
+      <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-royal/25 blur-[140px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-electric/20 blur-[140px]" />
+
+      <Container className="relative max-w-3xl">
+        <SectionHeading light eyebrow="Request a Quote" title="Tell us about your project" subtitle="Share the details and we'll get back to you with a tailored quotation." />
+
+        <div className="relative mt-14 rounded-3xl border border-ivory/10 bg-ivory p-6 shadow-premium sm:p-10">
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center py-10 text-center"
+              >
+                <CheckCircle2 className="h-14 w-14 text-royal" strokeWidth={1.5} />
+                <h3 className="mt-4 font-display text-2xl font-medium text-charcoal">Request received</h3>
+                <p className="mt-2 max-w-sm text-sm text-charcoal/60">
+                  Thank you, {values.fullName.split(' ')[0] || 'there'}. We'll be in touch shortly to discuss your project.
+                </p>
+                <Button className="mt-6" variant="secondary" onClick={() => { setSubmitted(false); setValues(initialValues); setArtworkName(null) }}>
+                  Submit another request
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.form
+                key="form"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onSubmit={handleSubmit}
+                noValidate
+                className="grid grid-cols-1 gap-5 sm:grid-cols-2"
+              >
+                <TextField id="fullName" label="Full Name" required value={values.fullName} onChange={(e) => update('fullName', e.target.value)} error={errors.fullName} placeholder="Your name" />
+                <TextField id="companyName" label="Company Name" value={values.companyName} onChange={(e) => update('companyName', e.target.value)} placeholder="Optional" />
+
+                <TextField id="phone" label="Phone" required type="tel" value={values.phone} onChange={(e) => update('phone', e.target.value)} error={errors.phone} placeholder="+92 300 0000000" />
+                <TextField id="whatsapp" label="WhatsApp" type="tel" value={values.whatsapp} onChange={(e) => update('whatsapp', e.target.value)} error={errors.whatsapp} placeholder="If different from phone" />
+
+                <TextField id="email" label="Email" required type="email" value={values.email} onChange={(e) => update('email', e.target.value)} error={errors.email} placeholder="you@company.com" className="sm:col-span-2" />
+
+                <SelectField id="product" label="Product" required options={quoteProductOptions} value={values.product} onChange={(e) => update('product', e.target.value)} error={errors.product} />
+                <TextField id="quantity" label="Quantity" required value={values.quantity} onChange={(e) => update('quantity', e.target.value)} error={errors.quantity} placeholder="e.g. 500" />
+
+                <TextField id="size" label="Size" value={values.size} onChange={(e) => update('size', e.target.value)} placeholder="e.g. A5, 3.5 x 2 in" />
+                <TextField id="material" label="Material" value={values.material} onChange={(e) => update('material', e.target.value)} placeholder="e.g. 300gsm Matte Card" />
+
+                <SelectField id="printingType" label="Printing Type" options={printingTypeOptions} value={values.printingType} onChange={(e) => update('printingType', e.target.value)} />
+                <SelectField id="finishing" label="Finishing" options={finishingOptions} value={values.finishing} onChange={(e) => update('finishing', e.target.value)} />
+
+                <TextField id="deliveryDate" label="Delivery Date" type="date" value={values.deliveryDate} onChange={(e) => update('deliveryDate', e.target.value)} className="sm:col-span-2" />
+
+                <TextAreaField
+                  id="requirements"
+                  label="Additional Requirements"
+                  value={values.requirements}
+                  onChange={(e) => update('requirements', e.target.value)}
+                  placeholder="Tell us anything else about your project..."
+                  className="sm:col-span-2"
+                />
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="artwork" className="mb-1.5 block text-sm font-medium text-charcoal/80">
+                    Upload Artwork
+                  </label>
+                  <label
+                    htmlFor="artwork"
+                    className="flex cursor-pointer items-center justify-center gap-3 rounded-xl border-2 border-dashed border-charcoal/20 bg-white px-4 py-6 text-sm text-charcoal/50 transition-colors hover:border-royal/40 hover:text-royal"
+                  >
+                    <UploadCloud size={18} strokeWidth={1.75} />
+                    {artworkName ?? 'Click to upload a file (PDF, AI, JPG, PNG)'}
+                  </label>
+                  <input
+                    id="artwork"
+                    type="file"
+                    accept=".pdf,.ai,.jpg,.jpeg,.png"
+                    className="sr-only"
+                    onChange={(e) => setArtworkName(e.target.files?.[0]?.name ?? null)}
+                  />
+                </div>
+
+                <div className="mt-2 flex flex-col gap-3 sm:col-span-2 sm:flex-row">
+                  <Button type="submit" size="lg" className="flex-1" icon={<Send size={15} />}>
+                    Request a Quote
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="lg"
+                    className="flex-1"
+                    icon={<MessageCircle size={15} />}
+                    onClick={() => window.open(buildWhatsAppLink(whatsappMessage()), '_blank', 'noreferrer')}
+                  >
+                    Order via WhatsApp
+                  </Button>
+                </div>
+              </motion.form>
+            )}
+          </AnimatePresence>
+        </div>
+      </Container>
+    </section>
+  )
+}

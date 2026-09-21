@@ -1,0 +1,30 @@
+EverfinePrinters — Artwork Guidelines
+======================================
+
+READY TO PRINT?
+
+General guidelines for preparing your artwork:
+
+1. High-Resolution Artwork
+   Submit files at 300 DPI or higher for crisp, sharp printing.
+
+2. CMYK Color Mode
+   Use CMYK where appropriate — RGB files may print with color shifts.
+
+3. Bleed
+   Include bleed where required so edge-to-edge designs print cleanly.
+
+4. Safe Margins
+   Keep important text and logos within the safe margin area.
+
+5. Proper Fonts
+   Embed or outline fonts to avoid substitution issues.
+
+6. Print-Ready PDF
+   Export a print-ready PDF where appropriate for the most reliable results.
+
+For product-specific specifications (bleed size, trim size, color profiles),
+please contact EverfinePrinters directly or request a quote through the website.
+
+— EverfinePrinters
+Print Beyond Ordinary.
