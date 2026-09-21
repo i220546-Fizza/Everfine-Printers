@@ -21,7 +21,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="relative py-24 sm:py-32">
       <Container>
-        <SectionHeading eyebrow="Our Work" title="Portfolio" subtitle="A selection of projects across print, packaging and branding." />
+        <SectionHeading eyebrow="Showcase" title="Our Work" subtitle="A selection of projects across print, packaging and branding." />
 
         <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-2">
           {portfolioCategories.map((cat) => (

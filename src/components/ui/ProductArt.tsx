@@ -1,5 +1,18 @@
 import type { ReactNode } from 'react'
-import type { ProductShape } from '@/data/products'
+
+export type ProductShape =
+  | 'businessCard'
+  | 'weddingCard'
+  | 'brochure'
+  | 'flyer'
+  | 'magazine'
+  | 'box'
+  | 'mug'
+  | 'pen'
+  | 'bag'
+  | 'stickerSheet'
+  | 'notebook'
+  | 'invitationCard'
 
 interface ProductArtProps {
   shape: ProductShape

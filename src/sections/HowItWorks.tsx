@@ -17,7 +17,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="relative py-24 sm:py-32">
       <Container>
-        <SectionHeading eyebrow="Our Process" title="How it works" subtitle="From your first idea to a finished, delivered product." />
+        <SectionHeading eyebrow="Our Process" title="From idea to print" subtitle="From your first idea to a finished, delivered product." />
 
         <div ref={trackRef} className="relative mt-20">
           <div className="absolute left-6 top-0 h-full w-px bg-charcoal/10 lg:left-0 lg:top-6 lg:h-px lg:w-full">

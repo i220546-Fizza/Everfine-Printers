@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
 import { TextField, SelectField, TextAreaField } from '@/components/ui/FormField'
-import { quoteProductOptions, printingTypeOptions, finishingOptions } from '@/data/quoteOptions'
+import { quoteServiceOptions, finishingOptions } from '@/data/quoteOptions'
 import { validateQuoteForm, type QuoteFormValues, type QuoteFormErrors } from '@/utils/validation'
 import { buildWhatsAppLink } from '@/utils/whatsapp'
 
@@ -13,16 +13,13 @@ const initialValues: QuoteFormValues = {
   fullName: '',
   companyName: '',
   phone: '',
-  whatsapp: '',
   email: '',
-  product: '',
+  service: '',
   quantity: '',
   size: '',
   material: '',
-  printingType: '',
   finishing: '',
-  deliveryDate: '',
-  requirements: '',
+  message: '',
 }
 
 export function QuoteForm() {
@@ -46,23 +43,13 @@ export function QuoteForm() {
     setSubmitted(true)
   }
 
-  function whatsappMessage() {
-    const lines = [
-      'Hello EverfinePrinters, I would like to get a quotation for a printing project.',
-      values.product && `Product: ${values.product}`,
-      values.quantity && `Quantity: ${values.quantity}`,
-      values.fullName && `Name: ${values.fullName}`,
-    ].filter(Boolean)
-    return lines.join('\n')
-  }
-
   return (
     <section id="quote" className="relative overflow-hidden bg-charcoal-deep py-24 text-ivory sm:py-32">
       <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-royal/25 blur-[140px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-electric/20 blur-[140px]" />
 
       <Container className="relative max-w-3xl">
-        <SectionHeading light eyebrow="Request a Quote" title="Tell us about your project" subtitle="Share the details and we'll get back to you with a tailored quotation." />
+        <SectionHeading light eyebrow="Request a Quote" title="Tell us about your project" subtitle="Share the details and we'll get back to you with a tailored quotation — no orders, no checkout, just a conversation about your project." />
 
         <div className="relative mt-14 rounded-3xl border border-ivory/10 bg-ivory p-6 shadow-premium sm:p-10">
           <AnimatePresence mode="wait">
@@ -93,32 +80,36 @@ export function QuoteForm() {
                 noValidate
                 className="grid grid-cols-1 gap-5 sm:grid-cols-2"
               >
-                <TextField id="fullName" label="Full Name" required value={values.fullName} onChange={(e) => update('fullName', e.target.value)} error={errors.fullName} placeholder="Your name" />
-                <TextField id="companyName" label="Company Name" value={values.companyName} onChange={(e) => update('companyName', e.target.value)} placeholder="Optional" />
+                <TextField id="fullName" label="Name" required value={values.fullName} onChange={(e) => update('fullName', e.target.value)} error={errors.fullName} placeholder="Your name" />
+                <TextField id="companyName" label="Company" value={values.companyName} onChange={(e) => update('companyName', e.target.value)} placeholder="Optional" />
 
                 <TextField id="phone" label="Phone" required type="tel" value={values.phone} onChange={(e) => update('phone', e.target.value)} error={errors.phone} placeholder="+92 300 0000000" />
-                <TextField id="whatsapp" label="WhatsApp" type="tel" value={values.whatsapp} onChange={(e) => update('whatsapp', e.target.value)} error={errors.whatsapp} placeholder="If different from phone" />
+                <TextField id="email" label="Email" required type="email" value={values.email} onChange={(e) => update('email', e.target.value)} error={errors.email} placeholder="you@company.com" />
 
-                <TextField id="email" label="Email" required type="email" value={values.email} onChange={(e) => update('email', e.target.value)} error={errors.email} placeholder="you@company.com" className="sm:col-span-2" />
+                <SelectField
+                  id="service"
+                  label="Service Required"
+                  required
+                  options={quoteServiceOptions}
+                  value={values.service}
+                  onChange={(e) => update('service', e.target.value)}
+                  error={errors.service}
+                  wrapperClassName="sm:col-span-2"
+                />
 
-                <SelectField id="product" label="Product" required options={quoteProductOptions} value={values.product} onChange={(e) => update('product', e.target.value)} error={errors.product} />
-                <TextField id="quantity" label="Quantity" required value={values.quantity} onChange={(e) => update('quantity', e.target.value)} error={errors.quantity} placeholder="e.g. 500" />
+                <TextField id="quantity" label="Quantity (optional)" value={values.quantity} onChange={(e) => update('quantity', e.target.value)} placeholder="e.g. 500" />
+                <TextField id="size" label="Size (optional)" value={values.size} onChange={(e) => update('size', e.target.value)} placeholder="e.g. A5, 3.5 x 2 in" />
 
-                <TextField id="size" label="Size" value={values.size} onChange={(e) => update('size', e.target.value)} placeholder="e.g. A5, 3.5 x 2 in" />
-                <TextField id="material" label="Material" value={values.material} onChange={(e) => update('material', e.target.value)} placeholder="e.g. 300gsm Matte Card" />
-
-                <SelectField id="printingType" label="Printing Type" options={printingTypeOptions} value={values.printingType} onChange={(e) => update('printingType', e.target.value)} />
-                <SelectField id="finishing" label="Finishing" options={finishingOptions} value={values.finishing} onChange={(e) => update('finishing', e.target.value)} />
-
-                <TextField id="deliveryDate" label="Delivery Date" type="date" value={values.deliveryDate} onChange={(e) => update('deliveryDate', e.target.value)} className="sm:col-span-2" />
+                <TextField id="material" label="Material (optional)" value={values.material} onChange={(e) => update('material', e.target.value)} placeholder="e.g. 300gsm Matte Card" />
+                <SelectField id="finishing" label="Finishing (optional)" options={finishingOptions} value={values.finishing} onChange={(e) => update('finishing', e.target.value)} />
 
                 <TextAreaField
-                  id="requirements"
-                  label="Additional Requirements"
-                  value={values.requirements}
-                  onChange={(e) => update('requirements', e.target.value)}
-                  placeholder="Tell us anything else about your project..."
-                  className="sm:col-span-2"
+                  id="message"
+                  label="Message"
+                  value={values.message}
+                  onChange={(e) => update('message', e.target.value)}
+                  placeholder="Tell us more about your project..."
+                  wrapperClassName="sm:col-span-2"
                 />
 
                 <div className="sm:col-span-2">
@@ -141,19 +132,28 @@ export function QuoteForm() {
                   />
                 </div>
 
-                <div className="mt-2 flex flex-col gap-3 sm:col-span-2 sm:flex-row">
-                  <Button type="submit" size="lg" className="flex-1" icon={<Send size={15} />}>
-                    Request a Quote
+                <div className="sm:col-span-2">
+                  <Button type="submit" size="lg" className="w-full" icon={<Send size={15} />}>
+                    Send Quote Request
                   </Button>
+                </div>
+
+                <div className="flex items-center gap-3 sm:col-span-2">
+                  <span className="h-px flex-1 bg-charcoal/10" />
+                  <span className="text-xs uppercase tracking-[0.2em] text-charcoal/35">or</span>
+                  <span className="h-px flex-1 bg-charcoal/10" />
+                </div>
+
+                <div className="sm:col-span-2">
                   <Button
                     type="button"
                     variant="secondary"
                     size="lg"
-                    className="flex-1"
+                    className="w-full"
                     icon={<MessageCircle size={15} />}
-                    onClick={() => window.open(buildWhatsAppLink(whatsappMessage()), '_blank', 'noreferrer')}
+                    onClick={() => window.open(buildWhatsAppLink(), '_blank', 'noreferrer')}
                   >
-                    Order via WhatsApp
+                    Contact Us on WhatsApp
                   </Button>
                 </div>
               </motion.form>

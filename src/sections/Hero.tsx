@@ -80,7 +80,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-charcoal/60 sm:text-lg lg:mx-0"
           >
-            Premium printing, packaging, branding and promotional solutions crafted to make your ideas stand out.
+            Professional printing, packaging and promotional solutions crafted to bring your ideas to life.
           </motion.p>
 
           <motion.div
@@ -89,11 +89,11 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
           >
-            <Button size="lg" onClick={() => scrollToId('quote')} icon={<ArrowRight size={16} />}>
-              Get a Quote
-            </Button>
             <Button size="lg" variant="secondary" onClick={() => scrollToId('services')}>
               Explore Our Services
+            </Button>
+            <Button size="lg" onClick={() => scrollToId('quote')} icon={<ArrowRight size={16} />}>
+              Get a Quote
             </Button>
           </motion.div>
 

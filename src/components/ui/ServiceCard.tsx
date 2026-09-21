@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import { Icon } from './Icon'
 import { RevealItem } from './Reveal'
+import { scrollToId } from '@/utils/scrollTo'
 import type { ServiceItem } from '@/data/services'
 
 export function ServiceCard({ item, dark = false }: { item: ServiceItem; dark?: boolean }) {
@@ -11,8 +13,8 @@ export function ServiceCard({ item, dark = false }: { item: ServiceItem; dark?: 
         transition={{ type: 'spring', stiffness: 300, damping: 22 }}
         className={
           dark
-            ? 'group relative h-full overflow-hidden rounded-2xl border border-ivory/10 bg-charcoal-soft/60 p-6 transition-colors duration-300 hover:border-electric-light/40'
-            : 'group relative h-full overflow-hidden rounded-2xl border border-charcoal/8 bg-white/60 p-6 shadow-[0_20px_50px_-30px_rgba(10,9,13,0.25)] backdrop-blur-sm transition-colors duration-300 hover:border-royal/30'
+            ? 'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ivory/10 bg-charcoal-soft/60 p-6 transition-colors duration-300 hover:border-electric-light/40'
+            : 'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-charcoal/8 bg-white/60 p-6 shadow-[0_20px_50px_-30px_rgba(10,9,13,0.25)] backdrop-blur-sm transition-colors duration-300 hover:border-royal/30'
         }
       >
         <div
@@ -30,6 +32,19 @@ export function ServiceCard({ item, dark = false }: { item: ServiceItem; dark?: 
         <p className={dark ? 'mt-1.5 text-sm leading-relaxed text-ivory/55' : 'mt-1.5 text-sm leading-relaxed text-charcoal/55'}>
           {item.description}
         </p>
+
+        <button
+          onClick={() => scrollToId('quote')}
+          className={
+            dark
+              ? 'mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-electric-light transition-transform duration-300 hover:gap-2.5'
+              : 'mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-royal transition-transform duration-300 hover:gap-2.5'
+          }
+        >
+          Explore Service
+          <ArrowRight size={13} strokeWidth={2} />
+        </button>
+
         <div
           className={
             dark

@@ -9,7 +9,11 @@ export function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="relative py-24 sm:py-32">
       <Container>
-        <SectionHeading eyebrow="Why Choose Us" title="What sets EverfinePrinters apart" />
+        <SectionHeading
+          eyebrow="Why EverfinePrinters"
+          title="What sets us apart"
+          subtitle="The standards we hold on every project, large or small."
+        />
 
         <RevealGroup className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
           {whyChooseUsItems.map((item) => (

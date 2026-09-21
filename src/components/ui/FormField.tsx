@@ -4,9 +4,23 @@ import { cn } from '@/utils/cn'
 const fieldBase =
   'w-full rounded-xl border bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/35 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-electric/40'
 
-function FieldWrapper({ label, htmlFor, error, required, children }: { label: string; htmlFor: string; error?: string; required?: boolean; children: ReactNode }) {
+function FieldWrapper({
+  label,
+  htmlFor,
+  error,
+  required,
+  wrapperClassName,
+  children,
+}: {
+  label: string
+  htmlFor: string
+  error?: string
+  required?: boolean
+  wrapperClassName?: string
+  children: ReactNode
+}) {
   return (
-    <div>
+    <div className={wrapperClassName}>
       <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-charcoal/80">
         {label}
         {required && <span className="text-royal"> *</span>}
@@ -21,11 +35,11 @@ function FieldWrapper({ label, htmlFor, error, required, children }: { label: st
   )
 }
 
-type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }
+type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string; wrapperClassName?: string }
 
-export function TextField({ label, error, id, required, className, ...props }: TextFieldProps) {
+export function TextField({ label, error, id, required, className, wrapperClassName, ...props }: TextFieldProps) {
   return (
-    <FieldWrapper label={label} htmlFor={id!} error={error} required={required}>
+    <FieldWrapper label={label} htmlFor={id!} error={error} required={required} wrapperClassName={wrapperClassName}>
       <input
         id={id}
         required={required}
@@ -37,11 +51,27 @@ export function TextField({ label, error, id, required, className, ...props }: T
   )
 }
 
-type SelectFieldProps = SelectHTMLAttributes<HTMLSelectElement> & { label: string; error?: string; options: string[]; placeholder?: string }
+type SelectFieldProps = SelectHTMLAttributes<HTMLSelectElement> & {
+  label: string
+  error?: string
+  options: string[]
+  placeholder?: string
+  wrapperClassName?: string
+}
 
-export function SelectField({ label, error, id, required, options, placeholder = 'Select an option', className, ...props }: SelectFieldProps) {
+export function SelectField({
+  label,
+  error,
+  id,
+  required,
+  options,
+  placeholder = 'Select an option',
+  className,
+  wrapperClassName,
+  ...props
+}: SelectFieldProps) {
   return (
-    <FieldWrapper label={label} htmlFor={id!} error={error} required={required}>
+    <FieldWrapper label={label} htmlFor={id!} error={error} required={required} wrapperClassName={wrapperClassName}>
       <select
         id={id}
         required={required}
@@ -60,11 +90,11 @@ export function SelectField({ label, error, id, required, options, placeholder =
   )
 }
 
-type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string; error?: string }
+type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string; error?: string; wrapperClassName?: string }
 
-export function TextAreaField({ label, error, id, required, className, ...props }: TextAreaFieldProps) {
+export function TextAreaField({ label, error, id, required, className, wrapperClassName, ...props }: TextAreaFieldProps) {
   return (
-    <FieldWrapper label={label} htmlFor={id!} error={error} required={required}>
+    <FieldWrapper label={label} htmlFor={id!} error={error} required={required} wrapperClassName={wrapperClassName}>
       <textarea
         id={id}
         required={required}

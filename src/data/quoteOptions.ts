@@ -1,23 +1,24 @@
-export const quoteProductOptions: string[] = [
+/** Options for the "Service Required" field on the Request a Quote form. */
+export const quoteServiceOptions: string[] = [
   'Business Cards',
+  'Letterheads & Envelopes',
+  'Flyers & Brochures',
+  'Posters & Calendars',
   'Wedding Cards',
-  'Invitations',
-  'Flyers',
-  'Brochures',
-  'Posters',
-  'Banners',
-  'Packaging',
-  'Stickers',
-  'Labels',
-  'Mugs',
-  'Pens',
-  'Bags',
-  'Notebooks',
-  'Promotional Products',
+  'Invitation & Event Cards',
+  'Custom Mugs',
+  'Promotional Pens',
+  'Custom Bags',
+  'Notebooks & Keychains',
+  'Promotional Gifts / T-Shirts / Caps',
+  'Custom Boxes & Packaging',
+  'Labels & Stickers',
+  'Banners & Signage',
+  'Digital Printing',
+  'Offset Printing',
+  'Graphic / Print Design',
   'Other',
 ]
-
-export const printingTypeOptions: string[] = ['Digital Printing', 'Offset Printing', 'Large Format', 'Not Sure']
 
 export const finishingOptions: string[] = [
   'None',

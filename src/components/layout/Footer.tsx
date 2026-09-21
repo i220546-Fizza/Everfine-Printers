@@ -1,4 +1,4 @@
-import { Printer, Phone, Mail, MapPin } from 'lucide-react'
+import { Printer, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 import { scrollToId } from '@/utils/scrollTo'
 import { buildWhatsAppLink } from '@/utils/whatsapp'
@@ -11,8 +11,9 @@ const columns = [
     links: [
       { label: 'Home', href: 'home' },
       { label: 'About', href: 'about' },
+      { label: 'Our Work', href: 'portfolio' },
       { label: 'Leadership', href: 'leadership' },
-      { label: 'Portfolio', href: 'portfolio' },
+      { label: 'FAQ', href: 'faq' },
       { label: 'Contact', href: 'contact' },
     ],
   },
@@ -20,32 +21,11 @@ const columns = [
     title: 'Services',
     links: [
       { label: 'Business Printing', href: 'services' },
-      { label: 'Wedding Cards', href: 'wedding' },
+      { label: 'Wedding & Event Printing', href: 'wedding' },
+      { label: 'Promotional Printing', href: 'promotional' },
       { label: 'Packaging', href: 'packaging' },
-      { label: 'Promotional Products', href: 'promotional' },
-      { label: 'Digital Printing', href: 'digital-offset' },
-      { label: 'Offset Printing', href: 'digital-offset' },
       { label: 'Large Format', href: 'large-format' },
-    ],
-  },
-  {
-    title: 'Products',
-    links: [
-      { label: 'Mugs', href: 'products' },
-      { label: 'Pens', href: 'products' },
-      { label: 'Bags', href: 'products' },
-      { label: 'Cards', href: 'products' },
-      { label: 'Stickers', href: 'products' },
-      { label: 'Boxes', href: 'products' },
-      { label: 'Notebooks', href: 'products' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'FAQ', href: 'faq' },
-      { label: 'Artwork Guidelines', href: 'artwork-guidelines' },
-      { label: 'Request Quote', href: 'quote' },
+      { label: 'Printing Solutions', href: 'digital-offset' },
     ],
   },
 ]
@@ -59,8 +39,8 @@ export function Footer() {
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-electric/15 blur-[120px]" />
 
       <Container className="relative py-16 sm:py-20">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="col-span-2 lg:col-span-2">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-1">
             <button onClick={() => scrollToId('home')} className="flex items-center gap-2.5">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-royal to-electric text-ivory">
                 <Printer size={18} strokeWidth={1.75} />
@@ -119,7 +99,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <Phone size={15} className="mt-0.5 shrink-0 text-electric-light" strokeWidth={1.75} />
+                <MessageCircle size={15} className="mt-0.5 shrink-0 text-electric-light" strokeWidth={1.75} />
                 <a href={buildWhatsAppLink()} target="_blank" rel="noreferrer" className="hover:text-electric-light">
                   WhatsApp
                 </a>
