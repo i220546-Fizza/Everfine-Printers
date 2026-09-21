@@ -5,15 +5,15 @@
       <stop offset="100%" stop-color="#1c1a22"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#5a2ad1"/>
-      <stop offset="100%" stop-color="#2f6fed"/>
+      <stop offset="0%" stop-color="#da0679"/>
+      <stop offset="100%" stop-color="#0a4b96"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1020" cy="120" r="220" fill="#5a2ad1" opacity="0.25"/>
-  <circle cx="120" cy="560" r="220" fill="#2f6fed" opacity="0.18"/>
+  <circle cx="1020" cy="120" r="220" fill="#da0679" opacity="0.25"/>
+  <circle cx="120" cy="560" r="220" fill="#0a4b96" opacity="0.18"/>
   <rect x="90" y="255" width="92" height="92" rx="22" fill="url(#accent)"/>
   <path d="M120 280 H160 C176 280 176 300 160 300 H136 V320 H155" stroke="#faf6ee" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="200" y="325" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#faf6ee">Everfine<tspan fill="#8f6bf5">Printers</tspan></text>
+  <text x="200" y="325" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#faf6ee">Everfine<tspan fill="#e75da8">Printers</tspan></text>
   <text x="92" y="400" font-family="Arial, sans-serif" font-size="30" fill="#c9cdd6" letter-spacing="2">PRINT BEYOND ORDINARY.</text>
 </svg>

@@ -1,4 +1,4 @@
-import { Printer, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import { siteConfig } from '@/data/site'
 import { scrollToId } from '@/utils/scrollTo'
 import { buildWhatsAppLink } from '@/utils/whatsapp'
@@ -42,12 +42,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <button onClick={() => scrollToId('home')} className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-royal to-electric text-ivory">
-                <Printer size={18} strokeWidth={1.75} />
-              </span>
-              <span className="font-display text-xl font-medium text-ivory">
-                Everfine<span className="text-electric-light font-semibold">Printers</span>
-              </span>
+              <img src="/assets/brand/logo.png" alt="EverfinePrinters" className="h-11 w-auto drop-shadow-[0_2px_16px_rgba(255,255,255,0.15)]" />
             </button>
             <p className="mt-4 max-w-xs text-sm text-ivory/50">{siteConfig.tagline}</p>
 

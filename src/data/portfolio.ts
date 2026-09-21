@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Offset',
     material: '350gsm Matte Card',
     finishing: 'Spot UV, Foil Edge',
-    accent: '#5a2ad1',
+    accent: '#da0679',
     enabled: true,
   },
   {
@@ -68,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Screen + Digital',
     material: 'Mixed Media',
     finishing: 'Full-Color Wrap',
-    accent: '#2f6fed',
+    accent: '#0a4b96',
     enabled: true,
   },
   {
@@ -79,7 +79,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Offset',
     material: 'Assorted',
     finishing: 'Varied',
-    accent: '#7b4ef0',
+    accent: '#e75da8',
     enabled: true,
   },
   {
@@ -101,7 +101,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Digital',
     material: '200gsm Poster Paper',
     finishing: 'Matte Coating',
-    accent: '#5a2ad1',
+    accent: '#da0679',
     enabled: true,
   },
   {
@@ -134,7 +134,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Digital',
     material: 'Textured Cotton Paper',
     finishing: 'Letterpress',
-    accent: '#2f6fed',
+    accent: '#0a4b96',
     enabled: true,
   },
   {
@@ -145,7 +145,7 @@ export const portfolioItems: PortfolioItem[] = [
     printingType: 'Offset',
     material: 'Rigid Board',
     finishing: 'Foil Stamping',
-    accent: '#7b4ef0',
+    accent: '#e75da8',
     enabled: true,
   },
   {

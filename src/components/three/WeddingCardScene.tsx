@@ -5,8 +5,8 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 const IVORY = '#faf6ee'
 const IVORY_DEEP = '#e9ddc7'
-const ROYAL = '#5a2ad1'
-const ROYAL_LIGHT = '#7b4ef0'
+const ROYAL = '#da0679'
+const ROYAL_LIGHT = '#e75da8'
 const CHARCOAL = '#2a2732'
 
 function Envelope({ progress }: { progress: RefObject<number> }) {

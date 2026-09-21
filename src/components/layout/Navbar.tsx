@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X, Printer } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { navLinks } from '@/data/nav'
 import { siteConfig } from '@/data/site'
 import { scrollToId } from '@/utils/scrollTo'
@@ -47,12 +47,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric"
           aria-label="EverfinePrinters — go to home"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-royal to-electric text-ivory shadow-[0_8px_24px_-8px_rgba(90,42,209,0.6)]">
-            <Printer size={19} strokeWidth={1.75} />
-          </span>
-          <span className="font-display text-xl font-medium tracking-tight text-charcoal">
-            Everfine<span className="text-gradient-royal font-semibold">Printers</span>
-          </span>
+          <img src="/assets/brand/logo.png" alt="EverfinePrinters" className="h-9 w-auto sm:h-10" />
         </button>
 
         <ul className="hidden items-center gap-1 lg:flex">

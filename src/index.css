@@ -9,11 +9,12 @@
   --color-charcoal-deep: #131118;
   --color-charcoal-soft: #2a2732;
   --color-ink: #0a090d;
-  --color-royal: #5a2ad1;
-  --color-royal-light: #7b4ef0;
-  --color-royal-deep: #3c1a94;
-  --color-electric: #2f6fed;
-  --color-electric-light: #5c93ff;
+  /* "royal"/"electric" now carry the Everfine logo's brand colors: magenta + blue. */
+  --color-royal: #da0679;
+  --color-royal-light: #e75da8;
+  --color-royal-deep: #990455;
+  --color-electric: #0a4b96;
+  --color-electric-light: #608abb;
   --color-silver: #c9cdd6;
   --color-silver-soft: #e4e6ec;
 
@@ -21,8 +22,8 @@
   --font-sans: 'Manrope', 'Segoe UI', sans-serif;
 
   --shadow-premium: 0 30px 80px -20px rgba(10, 9, 13, 0.35);
-  --shadow-glow-royal: 0 0 60px -10px rgba(90, 42, 209, 0.45);
-  --shadow-glow-electric: 0 0 60px -10px rgba(47, 111, 237, 0.4);
+  --shadow-glow-royal: 0 0 60px -10px rgba(218, 6, 121, 0.45);
+  --shadow-glow-electric: 0 0 60px -10px rgba(10, 75, 150, 0.4);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;

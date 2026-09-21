@@ -5,8 +5,8 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 const CHARCOAL = '#1c1a22'
 const IVORY = '#faf6ee'
-const ROYAL_LIGHT = '#7b4ef0'
-const ELECTRIC = '#2f6fed'
+const ROYAL_LIGHT = '#e75da8'
+const ELECTRIC = '#0a4b96'
 
 function Card() {
   const group = useRef<THREE.Group>(null)

@@ -8,9 +8,9 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 const PALETTE = {
   ivory: '#faf6ee',
   charcoal: '#1c1a22',
-  royal: '#5a2ad1',
-  royalLight: '#7b4ef0',
-  electric: '#2f6fed',
+  royal: '#da0679',
+  royalLight: '#e75da8',
+  electric: '#0a4b96',
   silver: '#c9cdd6',
 }
 

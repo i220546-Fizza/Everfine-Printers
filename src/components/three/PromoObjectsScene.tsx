@@ -5,8 +5,8 @@ import * as THREE from 'three'
 
 const IVORY = '#faf6ee'
 const CHARCOAL = '#1c1a22'
-const ROYAL = '#5a2ad1'
-const ELECTRIC = '#2f6fed'
+const ROYAL = '#da0679'
+const ELECTRIC = '#0a4b96'
 const SILVER = '#c9cdd6'
 
 function Mug() {

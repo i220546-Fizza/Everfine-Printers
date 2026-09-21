@@ -11,6 +11,22 @@ No fake company history, statistics, testimonials or team photos were invented. 
 information wasn't provided, the site uses clearly-marked editable placeholder content (see
 **Content you should edit** below).
 
+## Brand
+
+The site's color theme (buttons, gradients, headings, the 3D scenes, favicon, loading screen)
+is derived from the supplied Everfine logo:
+
+- Magenta `#DA0679` (Tailwind's `royal` tokens — `--color-royal`, `-light`, `-deep`)
+- Blue `#0A4B96` (Tailwind's `electric` tokens — `--color-electric`, `-light`)
+
+Both live in `src/index.css`'s `@theme` block — change them there to re-theme the whole site in
+one place (every `bg-royal`, `text-electric`, gradient, etc. picks it up automatically). The 3D
+scenes under `src/components/three/*` read literal hex constants instead (Three.js materials
+can't consume CSS variables), so update those alongside the theme tokens if the palette changes.
+
+The logo itself (background removed) lives at `public/assets/brand/logo.png` and is used as the
+brand mark in the navbar and footer — replace that file to update the logo everywhere at once.
+
 ## Not an e-commerce site
 
 The primary user journey is: **Discover EverfinePrinters → Explore Services → See Our Work →

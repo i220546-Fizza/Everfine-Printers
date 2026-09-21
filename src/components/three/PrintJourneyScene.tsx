@@ -5,9 +5,9 @@ import * as THREE from 'three'
 const IVORY = '#faf6ee'
 const IVORY_DEEP = '#e9ddc7'
 const CHARCOAL = '#1c1a22'
-const ROYAL = '#5a2ad1'
-const ROYAL_LIGHT = '#7b4ef0'
-const ELECTRIC = '#2f6fed'
+const ROYAL = '#da0679'
+const ROYAL_LIGHT = '#e75da8'
+const ELECTRIC = '#0a4b96'
 const SILVER = '#c9cdd6'
 
 const STAGE_COUNT = 8

@@ -5,9 +5,9 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 const IVORY = '#faf6ee'
 const IVORY_DEEP = '#e9ddc7'
-const ROYAL = '#5a2ad1'
+const ROYAL = '#da0679'
 const CHARCOAL = '#2a2732'
-const ELECTRIC = '#2f6fed'
+const ELECTRIC = '#0a4b96'
 
 const SIZE = 0.95
 const HALF = SIZE / 2

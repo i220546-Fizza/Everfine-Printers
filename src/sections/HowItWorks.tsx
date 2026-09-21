@@ -33,7 +33,7 @@ export function HowItWorks() {
 
           <motion.div
             style={{ top: '-7px', left: markerLeft }}
-            className="absolute hidden h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-electric shadow-[0_0_0_6px_rgba(47,111,237,0.18)] lg:flex"
+            className="absolute hidden h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-electric shadow-[0_0_0_6px_rgba(10,75,150,0.18)] lg:flex"
           >
             <FileText size={9} className="text-ivory" />
           </motion.div>
