@@ -23,7 +23,9 @@ export function Leadership() {
                 <div className="mt-6 text-center">
                   <h3 className="font-display text-2xl font-medium text-ivory">{member.name}</h3>
                   <p className="mt-1 text-sm font-medium uppercase tracking-[0.2em] text-royal-light">{member.role}</p>
-                  <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-ivory/55">{member.bio}</p>
+                  {member.bio && (
+                    <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-ivory/55">{member.bio}</p>
+                  )}
                   {member.linkedin && (
                     <a
                       href={member.linkedin}

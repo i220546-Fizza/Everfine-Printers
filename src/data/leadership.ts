@@ -4,7 +4,7 @@ export interface LeadershipMember {
   role: string
   /** Path under /public — drop a JPG, PNG or WebP file at this exact path to replace the placeholder. */
   photoSrc: string
-  bio: string
+  bio?: string
   linkedin?: string
 }
 
@@ -22,7 +22,6 @@ export const leadershipTeam: LeadershipMember[] = [
     name: 'Srafraz Ahmed Bhatti',
     role: 'Founder',
     photoSrc: '/assets/leadership/founder.jpg',
-    bio: 'A short editable biography placeholder for the Founder — add background, philosophy and vision for EverfinePrinters here.',
     linkedin: '#',
   },
   {
@@ -30,7 +29,6 @@ export const leadershipTeam: LeadershipMember[] = [
     name: 'Ashfaq Ahmad',
     role: 'Chief Executive Officer',
     photoSrc: '/assets/leadership/ceo.jpeg',
-    bio: 'A short editable biography placeholder for the CEO — add background, leadership focus and priorities here.',
     linkedin: '#',
   },
 ]
