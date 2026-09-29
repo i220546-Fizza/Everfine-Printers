@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.everfineprinters.com/sitemap.xml
+Sitemap: https://everfine-printers.web.app/sitemap.xml
