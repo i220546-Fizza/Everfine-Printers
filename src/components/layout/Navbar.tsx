@@ -31,7 +31,15 @@ export function Navbar() {
 
   function handleNavClick(href: string) {
     setMobileOpen(false)
-    scrollToId(href)
+    // Clear this synchronously rather than waiting on the effect below —
+    // otherwise the scroll below can fire while body still has overflow:hidden
+    // applied from the still-open menu, which silently blocks it on mobile.
+    document.body.style.overflow = ''
+    // Deferred to the next frame: firing scrollIntoView in the same tick as the
+    // click that also closes the menu (React commit + AnimatePresence exit +
+    // cursor listeners all running together) can silently no-op the scroll on
+    // mobile. Letting that settle first makes the scroll reliable.
+    requestAnimationFrame(() => scrollToId(href))
   }
 
   return (
