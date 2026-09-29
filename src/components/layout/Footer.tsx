@@ -103,7 +103,7 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <MessageCircle size={15} className="mt-0.5 shrink-0 text-electric-light" strokeWidth={1.75} />
                 <a href={buildWhatsAppLink()} target="_blank" rel="noreferrer" className="hover:text-electric-light">
-                  WhatsApp
+                  {siteConfig.contact.phone}
                 </a>
               </li>
               <li className="flex items-start gap-2">
