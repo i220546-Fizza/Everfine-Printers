@@ -44,18 +44,20 @@ export function QuoteForm() {
     setSubmitting(true)
     setSubmitError(null)
     try {
-      // Firebase is loaded on demand so it doesn't add to the initial page bundle.
-      const [{ addDoc, collection, serverTimestamp }, { db }] = await Promise.all([
-        import('firebase/firestore'),
-        import('@/lib/firebase'),
-      ])
-      // Artwork files aren't uploaded yet — this stores the filename only.
-      // A Firestore-triggered Cloud Function (functions/) emails the team on each new document.
-      await addDoc(collection(db, 'quoteRequests'), {
-        ...values,
-        artworkName: artworkName ?? null,
-        createdAt: serverTimestamp(),
+      // Artwork files aren't uploaded anywhere yet — only the filename is sent along.
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          subject: `New quote request — ${values.fullName} (${values.service})`,
+          from_name: 'EverfinePrinters Website',
+          ...values,
+          artworkFile: artworkName ?? '(none uploaded)',
+        }),
       })
+      const result = await response.json()
+      if (!result.success) throw new Error(result.message ?? 'Submission failed')
       setSubmitted(true)
     } catch {
       setSubmitError("Something went wrong sending your request — please try again, or reach us on WhatsApp instead.")

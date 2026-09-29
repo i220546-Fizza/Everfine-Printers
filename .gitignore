@@ -12,18 +12,10 @@ dist
 dist-ssr
 *.local
 
-# Environment variables (Firebase web config, never commit real values)
+# Environment variables (Web3Forms access key, never commit real values)
 .env
 .env.local
 .env.*.local
-
-# Firebase
-functions/lib
-functions/node_modules
-.firebase
-firebase-debug.log
-firebase-debug.*.log
-.runtimeconfig.json
 
 # Editor directories and files
 .vscode/*
