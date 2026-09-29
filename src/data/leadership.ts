@@ -29,7 +29,7 @@ export const leadershipTeam: LeadershipMember[] = [
     id: 'ceo',
     name: 'Ashfaq Ahmad',
     role: 'Chief Executive Officer',
-    photoSrc: '/assets/leadership/ceo.jpg',
+    photoSrc: '/assets/leadership/ceo.jpeg',
     bio: 'A short editable biography placeholder for the CEO — add background, leadership focus and priorities here.',
     linkedin: '#',
   },
