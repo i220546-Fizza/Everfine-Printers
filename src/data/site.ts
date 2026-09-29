@@ -20,7 +20,7 @@ export const siteConfig = {
       { display: '+92 300 5285548', href: 'tel:+923005285548' },
       { display: '+92 301 5163456', href: 'tel:+923015163456' },
     ],
-    email: 'info@everfineprinters.com',
+    email: 'everfinep@gmail.com',
     address: '12-13, Basement, Ratta Mansion, AKM Fazl-ul-Haq Rd, Block H, G-7/2, Blue Area, Islamabad, Pakistan',
     openingHours: 'Mon – Sat: 10:00 AM – 8:00 PM',
     mapEmbedUrl:
