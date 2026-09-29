@@ -85,8 +85,8 @@ export function QuoteForm() {
                 <TextField id="fullName" label="Name" required value={values.fullName} onChange={(e) => update('fullName', e.target.value)} error={errors.fullName} placeholder="Your name" />
                 <TextField id="companyName" label="Company" value={values.companyName} onChange={(e) => update('companyName', e.target.value)} placeholder="Optional" />
 
-                <TextField id="phone" label="Phone" required type="tel" value={values.phone} onChange={(e) => update('phone', e.target.value)} error={errors.phone} placeholder="+92 300 0000000" />
-                <TextField id="email" label="Email" required type="email" value={values.email} onChange={(e) => update('email', e.target.value)} error={errors.email} placeholder="you@company.com" />
+                <TextField id="phone" label="Phone" required type="tel" value={values.phone} onChange={(e) => update('phone', e.target.value)} error={errors.phone} placeholder="+92 300 5285548" />
+                <TextField id="email" label="Email" required type="email" value={values.email} onChange={(e) => update('email', e.target.value)} error={errors.email} placeholder="everfinep@gmail.com" />
 
                 <SelectField
                   id="service"
