@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle2, Send, UploadCloud, MessageCircle } from 'lucide-react'
+import { CheckCircle2, Send, UploadCloud, MessageCircle, AlertCircle } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
@@ -28,20 +28,40 @@ export function QuoteForm() {
   const [errors, setErrors] = useState<QuoteFormErrors>({})
   const [artworkName, setArtworkName] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   function update<K extends keyof QuoteFormValues>(key: K, value: QuoteFormValues[K]) {
     setValues((v) => ({ ...v, [key]: value }))
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     const validationErrors = validateQuoteForm(values)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
 
-    // NOTE: no backend is wired up yet. Once the MongoDB "Quote Requests" collection
-    // and API route exist, POST `values` (+ artwork file) there instead of this local state.
-    setSubmitted(true)
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      // Firebase is loaded on demand so it doesn't add to the initial page bundle.
+      const [{ addDoc, collection, serverTimestamp }, { db }] = await Promise.all([
+        import('firebase/firestore'),
+        import('@/lib/firebase'),
+      ])
+      // Artwork files aren't uploaded yet — this stores the filename only.
+      // A Firestore-triggered Cloud Function (functions/) emails the team on each new document.
+      await addDoc(collection(db, 'quoteRequests'), {
+        ...values,
+        artworkName: artworkName ?? null,
+        createdAt: serverTimestamp(),
+      })
+      setSubmitted(true)
+    } catch {
+      setSubmitError("Something went wrong sending your request — please try again, or reach us on WhatsApp instead.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -134,9 +154,16 @@ export function QuoteForm() {
                   />
                 </div>
 
+                {submitError && (
+                  <div className="flex items-start gap-2 rounded-xl bg-royal-deep/10 px-4 py-3 text-sm text-royal-deep sm:col-span-2">
+                    <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                    <p>{submitError}</p>
+                  </div>
+                )}
+
                 <div className="sm:col-span-2">
-                  <Button type="submit" size="lg" className="w-full" icon={<Send size={15} />}>
-                    Send Quote Request
+                  <Button type="submit" size="lg" className="w-full" icon={<Send size={15} />} disabled={submitting}>
+                    {submitting ? 'Sending…' : 'Send Quote Request'}
                   </Button>
                 </div>
 
