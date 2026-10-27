@@ -10,6 +10,37 @@ import { portfolioItems, portfolioCategories, type PortfolioCategory, type Portf
 
 const patternHeights = ['h-64', 'h-80', 'h-72', 'h-96', 'h-64', 'h-80']
 
+/** Renders the item's real photo if `imageSrc` is set and loads; otherwise the accent-gradient placeholder. */
+function PortfolioArt({ item, className, titleClassName }: { item: PortfolioItem; className?: string; titleClassName?: string }) {
+  const [failed, setFailed] = useState(false)
+  const showImage = item.imageSrc && !failed
+
+  return (
+    <div
+      className={cn('relative flex w-full items-center justify-center overflow-hidden', className)}
+      style={
+        showImage
+          ? undefined
+          : { background: `linear-gradient(135deg, ${item.accent}, color-mix(in srgb, ${item.accent} 40%, #1c1a22))` }
+      }
+    >
+      {showImage && (
+        <img
+          src={item.imageSrc}
+          alt={item.title}
+          onError={() => setFailed(true)}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+      <span className={cn('relative font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105', showImage && 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]', titleClassName)}>
+        {item.title}
+      </span>
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    </div>
+  )
+}
+
 function PortfolioCard({ item, index, onOpen }: { item: PortfolioItem; index: number; onOpen: () => void }) {
   const tilt = useTilt<HTMLButtonElement>(5)
 
@@ -32,20 +63,7 @@ function PortfolioCard({ item, index, onOpen }: { item: PortfolioItem; index: nu
       data-cursor="view"
       className="group mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl text-left shadow-[0_20px_50px_-30px_rgba(10,9,13,0.35)]"
     >
-      <div
-        className={cn(
-          'relative flex w-full items-center justify-center overflow-hidden',
-          patternHeights[index % patternHeights.length]
-        )}
-        style={{
-          background: `linear-gradient(135deg, ${item.accent}, color-mix(in srgb, ${item.accent} 40%, #1c1a22))`,
-        }}
-      >
-        <span className="font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105">
-          {item.title}
-        </span>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      </div>
+      <PortfolioArt item={item} className={patternHeights[index % patternHeights.length]} />
       <div className="bg-white px-5 py-4">
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-royal">{item.category}</p>
         <p className="mt-1 font-display text-base font-medium text-charcoal">{item.title}</p>
@@ -101,13 +119,8 @@ export function Portfolio() {
 
       <Modal open={Boolean(active)} onClose={() => setActiveId(null)} labelledBy="portfolio-modal-title">
         {active && (
-          <div>
-            <div
-              className="flex h-48 items-center justify-center rounded-2xl"
-              style={{ background: `linear-gradient(135deg, ${active.accent}, color-mix(in srgb, ${active.accent} 40%, #1c1a22))` }}
-            >
-              <span className="font-display text-2xl font-medium text-ivory/90">{active.title}</span>
-            </div>
+          <div className="group">
+            <PortfolioArt item={active} className="h-48 rounded-2xl" titleClassName="text-2xl" />
             <p className="eyebrow mt-6">{active.category}</p>
             <h3 id="portfolio-modal-title" className="mt-2 font-display text-2xl font-medium text-charcoal">
               {active.title}

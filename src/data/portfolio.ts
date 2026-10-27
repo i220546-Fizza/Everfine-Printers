@@ -16,13 +16,19 @@ export interface PortfolioItem {
   printingType: string
   material: string
   finishing: string
-  /** Accent color used for the placeholder artwork tile; swap for a real project photo. */
+  /** Accent color used for the placeholder artwork tile when no imageSrc is set (or fails to load). */
   accent: string
+  /** Path under /public, e.g. '/assets/portfolio/corporate-identity-set.jpg'. Falls back to the accent placeholder if omitted or the file is missing. */
+  imageSrc?: string
   enabled: boolean
 }
 
 /**
  * OUR WORK — editable portfolio data.
+ * These 12 entries are placeholder sample projects, not real EverfinePrinters work —
+ * replace the titles/details with real projects, or drop a real photo at the path below
+ * for any entry to replace its placeholder artwork tile (filename must match the id):
+ *   /public/assets/portfolio/<id>.jpg  (or .png / .webp)
  * Each item renders a placeholder artwork tile until real project photography is supplied.
  * To add a project, copy an object below and give it a unique `id`.
  */
@@ -36,6 +42,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: '350gsm Matte Card',
     finishing: 'Spot UV, Foil Edge',
     accent: '#da0679',
+    imageSrc: '/assets/portfolio/corporate-identity-set.jpg',
     enabled: true,
   },
   {
@@ -47,6 +54,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Pearl Board',
     finishing: 'Foil Stamping, Die-Cut',
     accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/royal-ivory-wedding-suite.jpg',
     enabled: true,
   },
   {
@@ -58,6 +66,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Kraft Board',
     finishing: 'Soft-Touch Lamination',
     accent: '#2a2732',
+    imageSrc: '/assets/portfolio/artisan-coffee-packaging.jpg',
     enabled: true,
   },
   {
@@ -69,6 +78,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Mixed Media',
     finishing: 'Full-Color Wrap',
     accent: '#0a4b96',
+    imageSrc: '/assets/portfolio/studio-launch-merch-kit.jpg',
     enabled: true,
   },
   {
@@ -80,6 +90,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Assorted',
     finishing: 'Varied',
     accent: '#e75da8',
+    imageSrc: '/assets/portfolio/northline-brand-refresh.jpg',
     enabled: true,
   },
   {
@@ -91,6 +102,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: '150gsm Silk',
     finishing: 'Saddle Stitch',
     accent: '#faf6ee',
+    imageSrc: '/assets/portfolio/quarterly-catalogue.jpg',
     enabled: true,
   },
   {
@@ -102,6 +114,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: '200gsm Poster Paper',
     finishing: 'Matte Coating',
     accent: '#da0679',
+    imageSrc: '/assets/portfolio/summer-festival-poster-series.jpg',
     enabled: true,
   },
   {
@@ -113,6 +126,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Flex / Vinyl',
     finishing: 'Eyelets, Hemmed Edges',
     accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/storefront-banner-rollout.jpg',
     enabled: true,
   },
   {
@@ -124,6 +138,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: '400gsm Card',
     finishing: 'Lamination, Rounded Corners',
     accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/heritage-cafe-menu-cards.jpg',
     enabled: true,
   },
   {
@@ -135,6 +150,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Textured Cotton Paper',
     finishing: 'Letterpress',
     accent: '#0a4b96',
+    imageSrc: '/assets/portfolio/garden-engagement-invitations.jpg',
     enabled: true,
   },
   {
@@ -146,6 +162,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'Rigid Board',
     finishing: 'Foil Stamping',
     accent: '#e75da8',
+    imageSrc: '/assets/portfolio/gift-box-collection.jpg',
     enabled: true,
   },
   {
@@ -157,6 +174,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'PVC / Flex',
     finishing: 'Mounted Frames',
     accent: '#2a2732',
+    imageSrc: '/assets/portfolio/expo-signage-suite.jpg',
     enabled: true,
   },
 ]
