@@ -25,9 +25,10 @@ export interface PortfolioItem {
 
 /**
  * OUR WORK — editable portfolio data.
- * These 12 entries are placeholder sample projects, not real EverfinePrinters work —
- * replace the titles/details with real projects, or drop a real photo at the path below
- * for any entry to replace its placeholder artwork tile (filename must match the id):
+ * Several entries now use real EverfinePrinters project photos; the rest are
+ * still placeholder sample projects — replace the titles/details with real
+ * projects, or drop a real photo at the path below for any entry to replace
+ * its placeholder artwork tile (filename must match the id):
  *   /public/assets/portfolio/<id>.jpg  (or .png / .webp)
  * Each item renders a placeholder artwork tile until real project photography is supplied.
  * To add a project, copy an object below and give it a unique `id`.
@@ -131,12 +132,12 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 'heritage-cafe-menu-cards',
-    title: 'Heritage Café Menu Cards',
+    title: 'Mövenpick Hotel Centaurus Menu Board',
     category: 'Business Printing',
-    description: 'Durable, elegant menu cards designed for daily handling.',
+    description: 'A freestanding "Menu of the Day" board produced for Mövenpick Hotel Centaurus Islamabad’s café.',
     printingType: 'Digital',
-    material: '400gsm Card',
-    finishing: 'Lamination, Rounded Corners',
+    material: 'Foam Board',
+    finishing: 'Matte Lamination',
     accent: '#e9ddc7',
     imageSrc: '/assets/portfolio/heritage-cafe-menu-cards.jpg',
     enabled: true,
@@ -167,14 +168,50 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 'expo-signage-suite',
-    title: 'Trade Expo Signage Suite',
+    title: 'Mango Festival Retail Standee',
     category: 'Large Format',
-    description: 'Backdrop banners and directional signage for a trade exhibition.',
+    description: 'A free-standing A-frame display produced for a seasonal Mango Festival retail promotion.',
     printingType: 'Large Format',
-    material: 'PVC / Flex',
-    finishing: 'Mounted Frames',
+    material: 'Foam Board',
+    finishing: 'UV Coating',
     accent: '#2a2732',
     imageSrc: '/assets/portfolio/expo-signage-suite.jpg',
+    enabled: true,
+  },
+  {
+    id: 'navien-gift-set',
+    title: 'Navien Corporate Gift Set',
+    category: 'Promotional Products',
+    description: 'A branded corporate gift box for Navien, including a notebook, pen, tech accessories and drinkware.',
+    printingType: 'Screen + Digital',
+    material: 'Mixed Media',
+    finishing: 'Full-Color Branding',
+    accent: '#faf6ee',
+    imageSrc: '/assets/portfolio/navien-gift-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'tiss-branded-set',
+    title: 'TISS Branded Stationery & Drinkware',
+    category: 'Promotional Products',
+    description: 'A branded notebook, pen, keychain and mug set produced for TISS.',
+    printingType: 'Screen + Digital',
+    material: 'Mixed Media',
+    finishing: 'Full-Color Wrap, Debossing',
+    accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/tiss-branded-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'pearl-continental-tote',
+    title: 'Pearl-Continental Bhurban Tote Bag',
+    category: 'Promotional Products',
+    description: 'A hand-painted floral design tote bag produced for Pearl-Continental Hotel Bhurban.',
+    printingType: 'Digital',
+    material: 'Canvas Cotton',
+    finishing: 'Full-Color Print',
+    accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/pearl-continental-tote.jpg',
     enabled: true,
   },
 ]
