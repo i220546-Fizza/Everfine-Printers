@@ -33,9 +33,11 @@ function PortfolioArt({ item, className, titleClassName }: { item: PortfolioItem
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
-      <span className={cn('relative font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105', showImage && 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]', titleClassName)}>
-        {item.title}
-      </span>
+      {!showImage && (
+        <span className={cn('relative font-display text-lg font-medium text-ivory/90 transition-transform duration-500 group-hover:scale-105', titleClassName)}>
+          {item.title}
+        </span>
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </div>
   )

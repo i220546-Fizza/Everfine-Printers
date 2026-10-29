@@ -214,6 +214,30 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: '/assets/portfolio/pearl-continental-tote.jpg',
     enabled: true,
   },
+  {
+    id: 'legend-hotels-gift-set',
+    title: 'Legend Hotels & Resorts Corporate Gift Set',
+    category: 'Promotional Products',
+    description: 'A branded corporate gift box for Legend Hotels & Resorts, including a card holder, keychain, USB drive and pen.',
+    printingType: 'Engraving',
+    material: 'Metal, Mixed Media',
+    finishing: 'Laser Engraving',
+    accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/legend-hotels-gift-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'premium-menu-folder',
+    title: 'Premium Leather Menu Folder',
+    category: 'Business Printing',
+    description: 'A suede-bound restaurant menu folder with brass stud detailing and replaceable printed inserts.',
+    printingType: 'Digital',
+    material: 'Suede, Paper Insert',
+    finishing: 'Brass Stud Binding',
+    accent: '#2a2732',
+    imageSrc: '/assets/portfolio/premium-menu-folder.jpg',
+    enabled: true,
+  },
 ]
 
 export const portfolioCategories: (PortfolioCategory | 'All')[] = [
